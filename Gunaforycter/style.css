@@ -1,0 +1,521 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0d0d0d;
+  --card-bg: #141414;
+  --orange: #e07020;
+  --orange-light: #f0903a;
+  --gold: #d4a04a;
+  --text: #f0ece4;
+  --muted: #a09080;
+  --border: rgba(224, 112, 32, 0.25);
+  --card-border: rgba(255, 255, 255, 0.07);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Lato", sans-serif;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.site-header {
+  text-align: center;
+  padding: 48px 24px 20px;
+  position: relative;
+}
+
+.site-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.header-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.header-ornament .line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--orange));
+}
+
+.header-ornament .line.right {
+  background: linear-gradient(90deg, var(--orange), transparent);
+}
+
+.header-ornament svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--orange);
+}
+
+/* ── DRINKS GRID ── */
+.drinks-section {
+  padding: 32px 40px 40px;
+}
+
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.drink-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+}
+
+.drink-card:hover {
+  border-color: var(--border);
+  transform: translateY(-4px);
+}
+
+.drink-card.featured {
+  border-color: var(--orange);
+  box-shadow:
+    0 0 0 1px rgba(224, 112, 32, 0.15),
+    0 8px 40px rgba(224, 112, 32, 0.12);
+}
+
+.badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.badge.signature {
+  background: rgba(224, 112, 32, 0.15);
+  border: 1px solid rgba(224, 112, 32, 0.4);
+  color: var(--orange-light);
+}
+
+.badge.new-badge {
+  background: rgba(200, 80, 30, 0.15);
+  border: 1px solid rgba(200, 80, 30, 0.4);
+  color: #e05528;
+}
+
+.badge svg {
+  width: 11px;
+  height: 11px;
+  fill: currentColor;
+}
+
+.drink-img-wrap {
+  width: 100%;
+  height: 210px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 16px;
+  margin-top: 10px;
+}
+
+.drink-img-wrap img {
+  max-height: 100%;
+  max-width: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.6));
+}
+
+/* Placeholder gradient glasses */
+.glass-placeholder {
+  width: 80px;
+  border-radius: 6px 6px 14px 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.drink-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.drink-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.drink-price {
+  font-family: "Lato", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--orange-light);
+}
+
+/* ── CHEF SPECIAL ── */
+.chef-special {
+  max-width: 1100px;
+  margin: 0 auto 48px;
+  padding: 0 40px;
+}
+
+.chef-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  overflow: hidden;
+  position: relative;
+}
+
+.chef-img-col {
+  position: relative;
+  background: #0a0a0a;
+}
+
+.chef-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* fallback plate graphic */
+.chef-img-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  background: radial-gradient(ellipse at 40% 60%, #2a1500 0%, #0a0a0a 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.plate-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3a2010, #1a0e06);
+  border: 2px solid rgba(224, 112, 32, 0.2);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.chef-content {
+  padding: 40px 44px;
+  position: relative;
+  z-index: 2;
+}
+
+.chef-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.chef-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.chef-tagline {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.chef-desc {
+  font-size: 0.82rem;
+  color: #8a7a6a;
+  line-height: 1.75;
+  max-width: 360px;
+  margin-bottom: 32px;
+}
+
+.btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1.5px solid var(--orange);
+  color: var(--text);
+  font-family: "Lato", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 12px 26px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.btn-explore:hover {
+  background: var(--orange);
+  color: #fff;
+}
+
+.btn-explore .arrow {
+  font-size: 1rem;
+}
+
+/* leaf decoration */
+.leaf-deco {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 180px;
+  height: 180px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: #4a4040;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+}
+
+.footer-nav li a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-nav li a:hover {
+  color: var(--text);
+}
+
+.footer-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #3a3030;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-social span {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+.social-icon:hover {
+  border-color: var(--orange);
+}
+
+.social-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: var(--muted);
+}
+
+/* ── DRINK VISUALS (pure CSS glasses) ── */
+.glass-wrap {
+  width: 100%;
+  height: 210px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-bottom: 16px;
+  margin-top: 14px;
+}
+
+.tall-glass {
+  width: 68px;
+  height: 170px;
+  border-radius: 4px 4px 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.rocks-glass {
+  width: 82px;
+  height: 110px;
+  border-radius: 4px 4px 10px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-liquid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 88%;
+  border-radius: inherit;
+}
+
+.glass-shine {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 10px;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+}
+
+.glass-outline {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+}
+
+.garnish-lime {
+  position: absolute;
+  top: -10px;
+  right: -6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #8dc63f, #4a7a10);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.garnish-cherry {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e04040, #7a1010);
+}
+
+.garnish-mint {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3px;
+}
+
+.mint-leaf {
+  width: 14px;
+  height: 20px;
+  border-radius: 50% 50% 50% 0;
+  background: #3a8a30;
+  opacity: 0.9;
+}
+
+.mint-leaf:last-child {
+  transform: scaleX(-1);
+}
+
+.straw {
+  position: absolute;
+  top: -20px;
+  right: 16px;
+  width: 5px;
+  height: 60px;
+  background: linear-gradient(180deg, #222, #555);
+  border-radius: 3px;
+  transform: rotate(5deg);
+}
+
+.ice-cube {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* gradient fills per drink */
+.sunset-fill {
+  background: linear-gradient(180deg, #f05030 0%, #f08020 45%, #e03030 100%);
+}
+.tropical-fill {
+  background: linear-gradient(180deg, #d0900a 0%, #c07010 50%, #3a2810 100%);
+}
+.citrus-fill {
+  background: linear-gradient(180deg, #f0a820 0%, #e08020 60%, #e05020 100%);
+}
+.berry-fill {
+  background: linear-gradient(
+    180deg,
+    #f06080 0%,
+    #f04050 50%,
+    #c02030 80%,
+    #f0a0b0 100%
+  );
+}
